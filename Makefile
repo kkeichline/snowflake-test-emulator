@@ -14,6 +14,16 @@ init:
 shell:
 	$(PIPENV) shell
 
+# Install packages ("make install PACKAGE=flask")
+install:
+	$(PIPENV) install $(PACKAGE)
+	$(PIPENV) lock
+
+# install from requirements.txt if available
+install-req:
+	$(PIPENV) install -r requirements.txt
+	$(PIPENV) lock
+
 # Define target for running the application
 run:
 	$(FLASK) run
